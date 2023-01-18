@@ -25,7 +25,11 @@ SECRET_KEY = 'django-insecure-w8a@nca3l16#=_!ut&z-d!%x4-7#yh&(8-+nd_-wog%59*6*bh
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:8000',
+    'https://hoolinomics.lamasgroup.ru',
+]
 
 
 # Application definition

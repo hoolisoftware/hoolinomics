@@ -1,0 +1,38 @@
+{% extends 'admin/change_list.html' %}
+
+{% block object-tools %}
+    <div class="entity">
+        <h1>
+            Total : <span id="entity__total-price">Loading...</span>
+        </h1>
+        <br>
+    </div>
+    <script>
+        setTimeout(
+            ()=>{
+                let units = document.querySelectorAll('#result_list > tbody > tr > td.field-value')
+                let totalPrice = 0
+                let totalPriceLabel = document.querySelector('#entity__total-price')
+                Object.entries(units).forEach(
+                    item => totalPrice += Number(item[1].innerText)
+                )
+                totalPriceLabel.innerHTML = totalPrice
+                totalPriceLabel.classList.add(totalPrice >= 0 ? 'positive' : 'negative')  
+            }, 500
+        )
+    </script>
+    <style>
+        #entity__total-price
+        {
+            color: green;
+        }
+        #entity__total-price.positive
+        {
+            color: green;
+        }
+        #entity__total-price.negative
+        {
+            color: red;
+        }
+    </style>
+{% endblock %}
